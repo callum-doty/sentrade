@@ -1,7 +1,13 @@
-def generate_trading_signals(analyzed_articles: list[dict], active_strategies: list) -> list[dict]:
-    """Applies various trading strategies to analyzed articles to generate trading signals."""
-    {}
+def generate_trading_signals(analyzed_articles: list[dict]) -> list[dict]:
+    """Applies the basic sentiment strategy to analyzed articles to generate trading signals."""
+    trading_signals = []
+    strategy_params = {'positive_threshold': 0.6}
 
-def apply_risk_management(signals: list[dict], risk_params: dict) -> list[dict]:
-    """Filters or modifies signals based on predefined risk management rules."""
-    {}
+    from app.trading_logic.sentiment_strategy import evaluate_basic_sentiment_strategy
+
+    for article in analyzed_articles:
+        signal = evaluate_basic_sentiment_strategy(article, strategy_params)
+        if signal:
+            trading_signals.append(signal)
+
+    return trading_signals
