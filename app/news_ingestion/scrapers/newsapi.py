@@ -20,3 +20,8 @@ flat = pd.json_normalize(stock_news['articles'], sep='_')
 safe_name = re.sub(r'[^A-Za-z0-9_]+', '_', user_input.strip())[:50]
 
 flat.to_csv(f'{safe_name}_reviews.csv', index=False)
+
+from newsdataapi import NewsDataApiClient
+api = NewsDataApiClient(apikey='pub_f9bf033396e548cfb9f97a17e50ed4a9')
+response = api.news_api(q='pizza', timeframe='') 
+print(response)
