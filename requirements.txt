@@ -1,1 +1,4 @@
 feedparser
+newsapi-python
+pandas
+python-dotenv
